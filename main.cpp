@@ -1,3 +1,8 @@
+/*
+The ugliest piece of hack-crap garbage I've mad in a long time
+Should be useful for planning though...
+*/
+
 #include <iostream>
 #include <time.h>
 #include <random>
