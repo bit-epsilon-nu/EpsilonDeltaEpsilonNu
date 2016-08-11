@@ -1,0 +1,106 @@
+names of jobs enum
+    food, defence, wood job types and no job
+
+person type contianing
+    alive
+    name
+    job assignment
+    attack
+    health
+
+
+town class
+    the bread and butter of the program
+    default constructor set to start minimal resources
+    peasant defender house farms constructor to allow custom start
+    contains all the objects a player directly interacts with
+
+peasant
+    type of person
+    can gather wood, food or do nothing
+defender
+    type of person
+    stronger than peasant
+    when outsiders attack all of these must be killed before peasants are killed    //likely to change later
+
+building
+    the base class of structures
+homes
+    type of building
+    hold 3 people per home
+    need homes to have people to assign
+farms
+    type of building
+    produce 2 food per person working on them
+    up to 5 people can work on a farm at once
+throneroom
+    type of building
+    if this is destroyed the player loses
+    destroyed when all player units are killed in an attack
+wall
+    type of building
+    if player builds this around their town, they win
+    cost 50 wood to build   //likely will be built in sections later
+
+viewpeople()
+    lets you individually inspect each person in the town
+    lets you assign that person a job using sjob()
+
+sjob(person, new job)
+    gives a person a new job
+    changes their name to peasant or defender
+
+calculate inventory
+    processes player inventory at the end of the turn
+    removes wood for building
+    removes food that is eaten
+    brings in wood that is collected
+    brings in food that is harvested
+
+ create(name, job, number or people to create)
+    makes people
+    mainly used by the constructor
+    could be used by other parts of the program
+
+
+combat
+    happens when AI decides to attack
+    roll to see if AI unit strikes or player unit strikes
+    firstunit to strike attacks then the second then the first... until a unit is dead
+    once a unit is killed, a new unit enters for that side and another roll determines who goes first...
+    if no more units, that side loses
+
+attack
+    figures out which unit is representing the player
+    if there are defenders, they represent the player with 20 health and 10 attack
+    else peasant represents the player with 10 health 5 attack
+    this info is fed to combat()
+
+
+outsider turn
+    decides weather the outsiders attack this turn
+    attack if outsiders > (player defenders+5)*1.5
+    if attack succeeds, throne is destroyed and player loses
+    increase the number of outsiders
+
+player turn
+    assign townspeople
+    schedule new buildings
+    end turn
+
+main
+    setup()
+    game loop()
+    cleanup()
+setup
+    create town
+    initialize number of outsiders
+    initilize game turn number
+
+game loop
+    ++game turn number
+    player turn
+    outsider turn
+clean up
+    if player wins cout positive messages
+    if player loses cout negative messages
